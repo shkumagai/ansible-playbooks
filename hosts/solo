@@ -1,0 +1,7 @@
+node1 ansible_ssh_host=192.168.56.101
+
+[erlang]
+node1
+
+[python]
+node1

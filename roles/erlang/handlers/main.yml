@@ -1,0 +1,4 @@
+---
+
+- name: show version
+  command: /opt/local/erlang/{{ otp_ver }}/bin/erl -version

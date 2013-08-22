@@ -1,0 +1,17 @@
+---
+
+# Basic
+- hosts: all
+  user: root
+  tasks:
+    - include: ../roles/common/tasks/main.yml
+  handlers:
+    - include: ../roles/common/handlers/main.yml
+
+# Erlang/OTP
+- hosts: erlang
+  user: root
+  tasks:
+    - include: ../roles/erlang/tasks/main.yml otp_ver_full=R16B01 otp_ver=R16B01
+  handlers:
+    - include: ../roles/erlang/handlers/main.yml otp_ver=R16B01

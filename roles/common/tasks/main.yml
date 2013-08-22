@@ -1,0 +1,19 @@
+---
+
+- name: Install ntpdate
+  yum: name=ntpdate state=present
+  tags: ntp
+
+- name: Configure ntp file
+  template: src=../roles/common/templates/ntpdate.j2
+            dest=/etc/cron.daily/ntpdate
+  tags: ntp
+  notify: execute ntpdate
+
+- name: Stop iptables
+  service: name=iptables state=stopped enabled=false
+  tags: iptables
+
+- name: Stop ip6tables
+  service: name=ip6tables state=stopped enabled=false
+  tags: iptables

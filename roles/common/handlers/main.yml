@@ -1,0 +1,4 @@
+---
+
+- name: execute ntpdate
+  command: /bin/bash /etc/cron.daily/ntpdate

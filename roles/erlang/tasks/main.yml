@@ -1,0 +1,41 @@
+---
+
+- name: Install dependent packages
+  action: yum pkg={{ item }} state=installed
+  with_items:
+    - ncurses-devel
+    - openssl-devel
+    - libselinux-python
+
+- name: Disabling selinux
+  action: selinux state=disabled
+  tags: selinux
+
+
+- name: Get archive
+  get_url: url={{ download_url }}/otp_src_{{ otp_ver_full }}.tar.gz
+           dest=/opt/otp_src_{{ otp_ver_full }}.tar.gz
+           force=yes
+  tags: erlang
+
+- name: Deflate archive
+  command: tar zxf /opt/otp_src_{{ otp_ver_full }}.tar.gz
+           chdir=/opt
+           creates=/opt/otp_src_{{ otp_ver }}
+  tags: erlang
+
+- name: Configure
+  command: ./configure {{ configure_options }}
+           chdir=/opt/otp_src_{{ otp_ver }}
+  tags: erlang
+
+- name: Make binary
+  command: make
+           chdir=/opt/otp_src_{{ otp_ver }}
+  tags: erlang
+
+- name: Install binary
+  command: make install
+           chdir=/opt/otp_src_{{ otp_ver }}
+  tags: erlang
+  notify: show version
