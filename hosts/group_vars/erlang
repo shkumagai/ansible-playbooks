@@ -1,0 +1,14 @@
+---
+download_url: http://download.basho.co.jp.cs-ap-e1.ycloud.jp/download
+
+configure_options: "--prefix=/opt/local/erlang/{{ otp_ver }} \
+  --enable-halfword-emulator \
+  --enable-smp-support \
+  --enable-kernel-poll \
+  --without-javac \
+  --disable-native-libs \
+  --disable-hipe \
+  --disable-sctp \
+  --enable-threads \
+  --enable-m64-build \
+  --without-dynamic-trace"

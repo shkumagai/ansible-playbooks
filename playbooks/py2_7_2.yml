@@ -1,0 +1,19 @@
+---
+
+# Basic
+- hosts: all
+  user: root
+  tasks:
+    - include: ../roles/common/tasks/main.yml
+  handlers:
+    - include: ../roles/common/handlers/main.yml
+
+# Python
+- hosts: python
+  user: root
+  vars_files:
+    - "../hosts/group_vars/python"
+  tasks:
+    - include: ../roles/python/tasks/main.yml py_ver=2.7.2
+  handlers:
+    - include: ../roles/python/handlers/main.yml py_ver=2.7.2

@@ -1,0 +1,4 @@
+---
+
+- name: show version
+  command: /opt/local/python{{ py_ver }}/bin/python -V

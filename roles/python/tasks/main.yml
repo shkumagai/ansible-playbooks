@@ -1,0 +1,37 @@
+---
+
+- name: Install dependent packages
+  yum: pkg={{ item }} state=installed
+  with_items:
+    - openssl-devel
+    - bzip2-devel
+    - sqlite-devel
+
+
+- name: Get source archive
+  get_url: url={{ download_url }}/{{ py_ver }}/Python-{{ py_ver }}.tgz
+           dest=/opt/Python-{{ py_ver }}.tgz
+           force=yes
+  tags: python
+
+- name: Deflate archive
+  command: tar zxf /opt/Python-{{ py_ver }}.tgz
+           chdir=/opt
+           creates=/opt/Python-{{ py_ver }}
+  tags: python
+
+- name: Configure
+  command: ./configure {{ configure_options }}
+           chdir=/opt/Python-{{ py_ver }}
+  tags: python
+
+- name: Make binary
+  command: make
+           chdir=/opt/Python-{{ py_ver }}
+  tags: python
+
+- name: Install binary
+  command: make install
+           chdir=/opt/Python-{{ py_ver }}
+  tags: python
+  notify: show version

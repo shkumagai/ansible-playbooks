@@ -1,0 +1,5 @@
+---
+download_url: http://python.org/ftp/python
+
+configure_options: "--prefix=/opt/local/python{{ py_ver }} \
+  --enable-ipv6"
