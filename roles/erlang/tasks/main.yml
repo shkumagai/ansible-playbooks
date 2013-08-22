@@ -5,11 +5,6 @@
   with_items:
     - ncurses-devel
     - openssl-devel
-    - libselinux-python
-
-- name: Disabling selinux
-  action: selinux state=disabled
-  tags: selinux
 
 
 - name: Get archive

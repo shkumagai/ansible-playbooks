@@ -1,5 +1,6 @@
 ---
 
+# ntp
 - name: Install ntpdate
   yum: name=ntpdate state=present
   tags: ntp
@@ -17,3 +18,18 @@
 - name: Stop ip6tables
   service: name=ip6tables state=stopped enabled=false
   tags: iptables
+
+# selinux
+- name: Install libselinux-python
+  yum: name=libselinux-python state=present
+  tags: selinux
+
+- name: Disable selinux config
+  selinux: state=disabled
+  tags: selinux
+
+- name: Disable selinux
+  command: setenforce 0
+  ignore_errors: True
+  tags: selinux
+  notify: show selinux state
