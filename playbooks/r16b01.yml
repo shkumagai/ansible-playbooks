@@ -11,6 +11,8 @@
 # Erlang/OTP
 - hosts: erlang
   user: root
+  vars_files:
+    - "../hosts/group_vars/erlang"
   tasks:
     - include: ../roles/erlang/tasks/main.yml otp_ver_full=R16B01 otp_ver=R16B01
   handlers:
