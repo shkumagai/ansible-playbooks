@@ -33,3 +33,11 @@
   ignore_errors: True
   tags: selinux
   notify: show selinux state
+
+- name: Shutdown to restart
+  command: /sbin/shutdown -r now
+  tags: selinux
+
+- name: Pause
+  pause: seconds={{ wait_seconds }}
+  tags: selinux

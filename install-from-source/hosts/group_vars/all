@@ -1,2 +1,6 @@
 ---
+# general ntp server
 ntpserver: ntp.nict.jp
+
+# duration of waitng for reboot server(s)
+wait_seconds: 30
