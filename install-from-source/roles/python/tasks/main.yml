@@ -1,7 +1,7 @@
 ---
 
 - name: Install dependent packages
-  yum: pkg={{ item }} state=installed
+  yum: name={{ item }} state=installed
   with_items:
     - openssl-devel
     - bzip2-devel

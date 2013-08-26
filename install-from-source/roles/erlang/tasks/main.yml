@@ -1,7 +1,7 @@
 ---
 
 - name: Install dependent packages
-  action: yum pkg={{ item }} state=installed
+  action: yum name={{ item }} state=installed
   with_items:
     - ncurses-devel
     - openssl-devel
